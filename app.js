@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-let port = 5000;
+const port = process.env.PORT || 5000;
 app.use(express.urlencoded({ extended: true }));
 const path = require("path");
 const ejsMate = require("ejs-mate");
