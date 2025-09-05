@@ -73,6 +73,11 @@ body {
   min-height: 100vh;
 }
 
+.f-info-socials a{
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+}
 .container {
   flex: 1;
 }

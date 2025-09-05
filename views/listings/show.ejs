@@ -13,33 +13,33 @@
     />
     <div class="card-body">
       <p class="card-text">
-        <b style="font-size:25px;"><%=listing.title %></b> <br />
+        <b style="font-size: 25px"><%=listing.title %></b> <br />
         <%=listing.description %> <br />
-        Price: &#8377; <b><%= listing.price.toLocaleString("en-IN") %></b> <br />
+        Price: &#8377; <b><%= listing.price.toLocaleString("en-IN") %></b>
+        <br />
         <%=listing.country %> <br />
         Location: <%=listing.location %>
       </p>
     </div>
   </div>
 
-<br />
+  <br />
 
-<div class="btns">
+  <div class="btns">
+    <a
+      href="/listings/<%=listing._id %>/edit"
+      class="btn btn-dark col-1 offset-3 edit-btn"
+      >Edit
+    </a>
 
-  <a
-    href="/listings/<%=listing._id %>/edit"
-    class="btn btn-dark col-1 offset-3 edit-btn"
-    >Edit
-  </a>
+    <form
+      method="POST"
+      action="/listings/<%=listing._id %>?_method=DELETE"
+      class="delete-form"
+    >
+      <button class="btn btn-dark offset-5">Delete</button>
+    </form>
+  </div>
 
-  <form
-  method="POST"
-  action="/listings/<%=listing._id %>?_method=DELETE"
-  class="delete-form"
-  >
-    <button class="btn btn-dark offset-5">Delete</button>
-  </form>
-</div>
-
-<script src="/script.js"></script>
+  <script src="/Js/script.js"></script>
 </div>
