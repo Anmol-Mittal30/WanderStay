@@ -1,0 +1,128 @@
+
+/* ----------------------------------------------NAvBar----------------------------------------------*/
+ .header-unique {
+    background-color: #fff;
+    padding: 1rem 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    
+  }
+
+  /* Search Bar  */
+  .custom-search-bar {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 0.75rem; /* Softly rounded corners, not circular */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 850px;
+    overflow: hidden; /* Ensures children conform to the rounded corners */
+  }
+
+  .search-input-section {
+    flex: 1; /* Distribute space */
+    position: relative;
+    padding: 0.5rem 1rem;
+  }
+  .search-input-section label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 0.1rem;
+    display: block;
+  }
+  /* Style for all inputs and the select dropdown */
+  .search-input-section .form-control,
+  .search-input-section .form-select {
+    border: none;
+    padding: 0;
+    background: transparent;
+    font-size: 0.9rem;
+    color: #555;
+    box-shadow: none !important; /* Remove focus glow */
+  }
+  /* for dropdown arrow Visible  */
+  .search-input-section .form-select {
+    cursor: pointer;
+  }
+
+  /* vertical line seprates  */
+  .search-input-section:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 32px;
+    width: 1px;
+    background-color: #e0e0e0;
+  }
+
+  .search-button-wrapper {
+    padding: 0.5rem;
+  }
+  .search-button-unique {
+    background-color: #ff385c;
+    color: #fff;
+    border-radius: 0.5rem; /* Matching rounded corners */
+    font-weight: 500;
+    border: none;
+    padding: 0.6rem 1.2rem;
+  }
+
+  
+/* ----------------------------------------------Footer --------------------------------------------- */
+
+ .footer-bg {
+    background-color: #f8f9fa;
+  }
+  .footer-links a {
+    color: #6c757d;
+    transition: all 0.2s ease-in-out;
+  }
+  .footer-links a:hover {
+    color: #212529;
+    text-decoration: underline !important;
+  }
+
+  /* For Social Links  */
+  .social-footer-compact {
+    text-align: center;
+  }
+  .social-footer-compact .social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  /* This selector now correctly targets the <a> tag */
+  .social-footer-compact .social-links > a {
+    color: #212529;
+    text-decoration: none;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+  }
+
+  /* This selector now correctly targets the <a> tag on hover */
+  .social-footer-compact .social-links > a:hover {
+    opacity: 1; /* ✅ CHANGED: Make it fully opaque on hover */
+    transform: scale(1.4);
+    color: #000000;
+  }
+
+  /* Styles for the content inside  the link */
+  .social-footer-compact .social-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .social-footer-compact .social-item i {
+    font-size: 1.5rem;
+  }
+  .social-footer-compact .social-item .social-text-link {
+    font-size: 0.9rem;
+  }
+  .social-footer-compact .creator-info {
+    font-size: 0.9rem;
+    color: #6c757d;
+  }

@@ -1,0 +1,54 @@
+
+<% layout("/layouts/boilerplate") %>
+
+<link rel="stylesheet" href="/CSS/booking/index.css">
+
+<div class="container my-5">
+    <h3 class="mb-4"><b>My Trips</b></h3>
+    <hr>
+
+    <% if (bookings && bookings.length > 0) { %>
+        <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 g-4 mt-3">
+            <% for(let booking of bookings) { %>
+                <div class="col">
+                    <a href="/listings/<%= booking.listing._id %>" class="listing-link">
+                        <div class="card h-100 booking-card">
+                            <div class="booking-img-container">
+                                <!-- <img src="<%= booking.listing.image.url %>" alt="<%= booking.listing.title %>"> -->
+
+                                    <img src="<%= booking.listing.cardImage  %>" alt="<%= booking.listing.title %>">
+
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold mb-1"><%= booking.listing.title %></h5>
+                                <p class="card-text text-muted"><%= booking.listing.location %></p>
+                                <p class="card-text mt-auto">
+                                    <small>
+                                        Booked: <%= new Date(booking.checkIn).toLocaleDateString() %> - <%= new Date(booking.checkOut).toLocaleDateString() %>
+                                    </small>
+                                </p>
+                                <% if (booking.paypalOrderId.startsWith('manual_')) { %>
+                                    <span class="badge bg-secondary" title="Manual ID: done by Manually ">Manual Booking</span>
+                                <% } else { %>
+                                    <span class="badge bg-success" title="PayPal Order ID: <%= booking.paypalOrderId %>">
+                                        <i class="fa-brands fa-paypal"></i> Paid with PayPal
+                                    </span>
+                                <% } %>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            <% } %>
+        </div>
+    <% } else { %>
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <h4>You haven't booked any trips yet!</h4>
+                <p>When you're ready to plan your next adventure, we'll be here to help.</p>
+                <a href="/listings" class="btn btn-dark">Start Exploring</a>
+            </div>
+        </div>
+    <% } %>
+</div>
+
+

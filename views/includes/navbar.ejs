@@ -1,0 +1,99 @@
+<link rel="stylesheet" href="/CSS/navAndfooter.css" />
+
+<header class="header-unique sticky-top">
+  <nav class="navbar navbar-expand-md">
+    <div class="container">
+      <a class="navbar-brand col-3" href="/listings">
+        <i
+          class="fa-brands fa-airbnb"
+          style="color: #ff385c; font-size: 2.2rem"
+        ></i>
+        <span
+          class="ms-1 fs-5 fw-bold d-none d-lg-inline"
+          style="color: #ff385c"
+          >WanderSTAY</span
+        >
+      </a>
+
+      <div class="col-6 d-none d-md-block">
+        <form
+          action="/listings"
+          method="GET"
+          class="d-flex align-items-center custom-search-bar mx-auto"
+        >
+          <div class="search-input-section">
+            <label for="category">Category</label>
+            <select class="form-select" id="category" name="category">
+              <option value="">All</option>
+              <option value="Trending">Trending</option>
+              <option value="Rooms">Rooms</option>
+              <option value="Iconic Cities">Iconic Cities</option>
+              <option value="Mountains">Mountains</option>
+            </select>
+          </div>
+          <div class="search-input-section">
+            <label for="location">Location</label>
+            <input
+              type="text"
+              class="form-control"
+              id="location"
+              name="location"
+              placeholder="e.g., Goa"
+            />
+          </div>
+          <div class="search-input-section">
+            <label for="price">Max Price</label>
+            <input
+              type="number"
+              class="form-control"
+              id="price"
+              name="price"
+              placeholder="e.g., 2500"
+            />
+          </div>
+          <div class="search-button-wrapper">
+            <button class="btn search-button-unique" type="submit">
+              <i class="bi bi-search me-1"></i> Search
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-3 d-flex justify-content-end align-items-center">
+        <a
+          class="nav-link fw-medium me-3 d-none d-lg-block"
+          href="/listings/new"
+          >Become a Host</a
+        >
+
+        <div class="dropdown">
+          <button
+            class="btn user-menu d-flex align-items-center dropdown-toggle"
+            type="button"
+            data-bs-toggle="dropdown"
+          >
+            <i class="bi bi-list me-2"></i>
+            <i class="bi bi-person-circle fs-4"></i>
+          </button>
+
+          <ul class="dropdown-menu dropdown-menu-end">
+            <% if(!currUser) { %>
+            <!-- if user is NOT logged in -->
+            <li>
+              <a class="dropdown-item" href="/signup"><b>Sign Up</b></a>
+            </li>
+            <li><a class="dropdown-item" href="/login">Log In</a></li>
+            <% } else { %>
+            <!--  if user IS logged in -->
+            <li>
+              <a class="dropdown-item" href="/profile"><b>My Profile</b></a>
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="/logout">Log Out</a></li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

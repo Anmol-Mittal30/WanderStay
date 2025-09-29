@@ -1,0 +1,160 @@
+<% layout("/layouts/boilerplate") %>
+
+<script>
+  const isLoggedIn = <%= !!currUser %>;
+</script>
+
+<link rel="stylesheet" href="/CSS/listings.css" />
+
+
+<div class="filters-container">
+  <div id="filters-scroll-area">
+    <a href="/listings" class="listing-link"
+      ><div
+        class="filter <%= !category || category === 'All' ? 'active' : '' %>"
+      >
+        <div><i class="fa-solid fa-border-all"></i></div>
+        <p>All</p>
+      </div></a
+    >
+    <a href="/listings?category=Trending" class="listing-link"
+      ><div class="filter <%= category === 'Trending' ? 'active' : '' %>">
+        <div><i class="fa-solid fa-fire"></i></div>
+        <p>Trending</p>
+      </div></a
+    >
+    <a href="/listings?category=Rooms" class="listing-link"
+      ><div class="filter <%= category === 'Rooms' ? 'active' : '' %>">
+        <div><i class="fa-solid fa-bed"></i></div>
+        <p>Rooms</p>
+      </div></a
+    >
+    <a href="/listings?category=Iconic Cities" class="listing-link"
+      ><div class="filter <%= category === 'Iconic Cities' ? 'active' : '' %>">
+        <div><i class="fa-solid fa-mountain-city"></i></div>
+        <p>Iconic Cities</p>
+      </div></a
+    >
+    <a href="/listings?category=Mountains" class="listing-link"
+      ><div class="filter <%= category === 'Mountains' ? 'active' : '' %>">
+        <div><i class="fa-solid fa-mountain"></i></div>
+        <p>Mountains</p>
+      </div></a
+    >
+    <a href="/listings?category=Castles" class="listing-link"
+      ><div class="filter <%= category === 'Castles' ? 'active' : '' %>">
+        <div><i class="fa-brands fa-fort-awesome"></i></div>
+        <p>Castles</p>
+      </div></a
+    >
+    <a href="/listings?category=Amazing Pools" class="listing-link"
+      ><div class="filter <%= category === 'Amazing Pools' ? 'active' : '' %>">
+        <div><i class="fa-solid fa-person-swimming"></i></div>
+        <p>Amazing Pools</p>
+      </div></a
+    >
+    <a href="/listings?category=Camping" class="listing-link"
+      ><div class="filter <%= category === 'Camping' ? 'active' : '' %>">
+        <div><i class="fa-solid fa-campground"></i></div>
+        <p>Camping</p>
+      </div></a
+    >
+    <a href="/listings?category=Farms" class="listing-link"
+      ><div class="filter <%= category === 'Farms' ? 'active' : '' %>">
+        <div><i class="fa-solid fa-cow"></i></div>
+        <p>Farms</p>
+      </div></a
+    >
+    <a href="/listings?category=Arctic" class="listing-link"
+      ><div class="filter <%= category === 'Arctic' ? 'active' : '' %>">
+        <div><i class="fa-solid fa-snowflake"></i></div>
+        <p>Arctic</p>
+      </div></a
+    >
+    <a href="/listings?category=Domes" class="listing-link"
+      ><div class="filter <%= category === 'Domes' ? 'active' : '' %>">
+        <div><i class="fa-solid fa-landmark-dome"></i></div>
+        <p>Domes</p>
+      </div></a
+    >
+    <a href="/listings?category=Boats" class="listing-link"
+      ><div class="filter <%= category === 'Boats' ? 'active' : '' %>">
+        <div><i class="fa-solid fa-ship"></i></div>
+        <p>Boats</p>
+      </div></a
+    >
+  </div>
+  <button id="scroll-right" class="scroll-btn">
+    <i class="fa-solid fa-chevron-right"></i>
+  </button>
+  <div class="fixed-filters">
+    <div class="tax-toggle">
+      <div class="form-check-reverse form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          role="switch"
+          id="switchCheckDefault"
+        />
+        <label class="form-check-label" for="switchCheckDefault"
+          >Display taxes</label
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<% if (allListings && allListings.length > 0) { %>
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+  <% for(let listing of allListings){ %>
+  <div class="col">
+    <div class="card listing-card border-0">
+      <a href="/listings/<%=listing._id %>" class="listing-link">
+        <img
+         
+          src="<%=listing.cardImage  %>"
+          class="card-img-top"
+          alt="listing_img"
+          style="height: 20rem; object-fit: cover; border-radius: 1rem"
+        />
+      </a>
+      <button class="wishlist-btn" data-listing-id="<%= listing._id %>">
+        <% if(currUser && currUser.wishlist &&
+        currUser.wishlist.includes(listing._id)) { %>
+        <i class="fa-solid fa-heart"></i>
+        <% } else { %>
+        <i class="fa-regular fa-heart"></i>
+        <% } %>
+      </button>
+      <a href="/listings/<%=listing._id %>" class="listing-link">
+        <div class="card-body">
+          <p class="card-text mb-0"><b><%=listing.title %></b></p>
+          <p class="card-text text-muted"><%=listing.location %></p>
+          <p class="card-text">
+            &#8377;<b><%=listing.price.toLocaleString("en-IN") %></b>
+            <span class="text-muted">/ night</span>
+            <span class="tax-info">&nbsp; &nbsp; +18% GST</span>
+
+            <button class="btn btn-primary card-btn">Go anywhere</button>
+          </p>
+        </div>
+      </a>
+    </div>
+  </div>
+  <% } %>
+</div>
+<% } else { %>
+<div class="row mt-5">
+  <div class="col-12 no-listings-container">
+    <i class="fa-regular fa-compass"></i>
+    <h3>No Listings Found!</h3>
+    <p>
+      Try changing your filters or be the first to add a listing in this
+      category.
+    </p>
+    <a href="/listings/new" class="btn btn-dark mt-2">Add a New Listing</a>
+  </div>
+</div>
+<% } %>
+
+<script src="/js/index.js"></script>

@@ -1,0 +1,330 @@
+/* ---------------------------------------------Show.ejs CSS------------------------------------------------------------ */
+/* General page styles */
+.show-img {
+  height: 60vh;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+.btns {
+  display: flex;
+  gap: 1rem;
+}
+.show-card {
+  padding-left: 0;
+  padding-right: 0;
+}
+.sticky-panel {
+  position: sticky;
+  top: 120px;
+}
+
+/* for Review Section */
+.reviews-section {
+  border-top: 1px solid #ddd;
+  padding-top: 2rem;
+  margin-top: 2rem;
+}
+.reviews-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.reviews-header h4 {
+  margin-bottom: 0;
+  font-weight: 600;
+}
+.reviews-header .star-icon {
+  font-size: 1.2rem;
+  color: #ff385c;
+}
+.review-card {
+  border: none;
+  margin-bottom: 1.5rem;
+}
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.review-author-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.review-author-info .name {
+  font-weight: 600;
+  margin-bottom: 0;
+}
+.review-author-info .date {
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin-bottom: 0;
+}
+.review-comment {
+  color: #333;
+}
+
+#payment-container {
+  position: relative;
+}
+#payment-container.is-disabled .disabled-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+/* --------------------------- New.ejs CSS ---------------------------------------------------- */
+/* These styles make the upload placeholder and preview look great */
+.upload-placeholder {
+  border: 2px dashed #dee2e6;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* Maintain a reasonable height for the upload area */
+  min-height: 300px; /* Slightly reduced for better fit */
+  height: auto; /* Allow height to adjust if image is smaller */
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  position: relative; /* Needed for absolute positioning of image */
+  overflow: hidden; /* Hide parts of the image that might exceed */
+}
+.upload-placeholder:hover {
+  background-color: #f8f9fa;
+}
+#listingPreview {
+  /* Position image absolutely to center it within the label */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  max-width: 100%;
+  max-height: 100%; /* Ensure image doesn't overflow its parent */
+  width: auto; /* Let browser determine width based on height or max-width */
+  height: auto; /* Let browser determine height based on width or max-height */
+
+  object-fit: contain; /* THIS IS THE KEY: Prevents stretching, maintains aspect ratio */
+  border-radius: 0.5rem;
+}
+#imagePlaceholder {
+  /* Ensure placeholder is on top of the image initially */
+  position: relative;
+  z-index: 1;
+}
+
+/* Helper class for our custom validation message */
+.invalid-feedback.is-visible {
+  display: block;
+}
+
+/* --------------------------------------------Index.ejs ------------------------------------- */
+/* Filter Icons  */
+.filters-container {
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 70px;
+  background-color: white;
+  z-index: 10;
+  box-shadow: 7 7px 4px rgba(0, 0, 0, 0.08);
+
+  width: 100%;
+  left: 0;
+  padding: 0.5rem 2rem;
+}
+/* Scroll button (only right arrow ) */
+.scroll-btn {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  z-index: 5;
+  flex-shrink: 0;
+  margin-left: 1rem; /* Space from scrolling categories */
+}
+.scroll-btn.hidden {
+  display: none;
+}
+
+/*  horizontally scrolling area for category icons */
+#filters-scroll-area {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  flex-grow: 1;
+}
+
+#filters-scroll-area::-webkit-scrollbar {
+  display: none;
+}
+
+/*  fixed elements on the right side */
+.fixed-filters {
+  display: flex;
+  align-items: center;
+  margin-left: 1.5rem;
+  flex-shrink: 0;
+}
+
+/* Individual filter items */
+.filter {
+  text-align: center;
+  padding: 0.5rem 1rem;
+  margin: 0.8rem;
+  opacity: 0.7;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+.filter:hover {
+  opacity: 1;
+  border-bottom-color: #ddd;
+}
+
+.filter p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.filter i {
+  font-size: 1.2rem;
+}
+
+.filter.active {
+  opacity: 1;
+  border-bottom-color: #fe424d;
+  color: #fe424d;
+}
+
+/* Card enhancements */
+.listing-card {
+  transition: transform 0.2s ease-in-out;
+  position: relative; /* Essential for positioning wishlist icon */
+}
+.listing-card:hover {
+  transform: scale(1.03);
+}
+.listing-link {
+  text-decoration: none;
+}
+
+.card-img-top {
+  border-radius: 1rem;
+}
+
+/* wishlist Icon  inside  image */
+.wishlist-icon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 1.5rem;
+  color: white;
+  z-index: 5;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+}
+
+/* New "No Listings" style */
+.no-listings-container {
+  text-align: center;
+  margin-top: 4rem;
+  color: #6c757d;
+}
+
+.no-listings-container i {
+  font-size: 5rem;
+}
+
+.tax-toggle {
+  /* keep  your original style */
+  border: 1px solid #dddddd;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+.tax-info {
+  display: none;
+}
+
+.card-btn {
+  background-color: #ff385c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  margin-left: 120px;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.card-btn:hover {
+  background-color: #d90e38;
+  color: white;
+}
+
+
+/* --- Main Fix for Heart Icon Layering --- */
+  .filters-container {
+    /* This ensures the filter bar stays on top of the heart icons when scrolling */
+    z-index: 11;
+  }
+
+  /* --- Other necessary styles for the page --- */
+  .listing-card {
+    position: relative;
+  }
+  .wishlist-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10; /* The filter container's z-index is now higher than this */
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: white;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  .wishlist-btn:hover {
+    transform: scale(1.1);
+  }
+  .wishlist-btn .fa-solid {
+    color: #ff385c;
+  }
+  .listing-link {
+    text-decoration: none;
+    color: inherit;
+  }
+  .tax-info {
+    display: none;
+  }
+  .scroll-btn.hidden {
+    display: none;
+  }

@@ -1,0 +1,66 @@
+  
+  body,
+  html {
+    height: 100%;
+    margin: 0;
+    font-family: "Plus Jakarta Sans", "sans-serif";
+    background-color: #f8f9fa;
+  }
+  .auth-container {
+    display: flex;
+    min-height: 100vh;
+  }
+  .auth-image-panel {
+    flex: 1;
+    background-image: url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=2070");
+    background-size: cover;
+    background-position: center;
+  }
+  .auth-form-panel {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .form-wrapper {
+    width: 100%;
+    max-width: 400px;
+  }
+  .form-wrapper .form-label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .form-wrapper .form-control {
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ced4da;
+  }
+  .form-wrapper .form-control:focus {
+    border-color: #ff385c;
+    box-shadow: 0 0 0 0.25rem rgba(255, 56, 92, 0.25);
+  }
+  .btn-auth {
+    background-color: #ff385c;
+    border-color: #ff385c;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  .btn-auth:hover {
+    background-color: #d90e38;
+    border-color: #d90e38;
+  }
+  .password-toggle {
+    position: absolute;
+    top: 70%;
+    right: 15px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #6c757d;
+  }
+  .brand-icon {
+    font-size: 2.5rem;
+    color: #ff385c;
+  }

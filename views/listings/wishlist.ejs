@@ -1,0 +1,42 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-4">
+    <h3 class="mb-4">My Wishlist</h3>
+    <% if (allListings && allListings.length > 0) { %>
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+            <% for(let listing of allListings){ %>
+                <a href="/listings/<%=listing._id %>" class="listing-link">
+                    <div class="card col listing-card border-0">
+                        <img
+                            src="<%=listing.image.url %>"
+                            class="card-img-top"
+                            alt="listing_img"
+                            style="height: 20rem; object-fit: cover; border-radius: 1rem"
+                        />
+                        <div class="card-body">
+                            <p class="card-text mb-0"><b><%=listing.title %></b></p>
+                            <p class="card-text text-muted"><%=listing.location %></p>
+                            <p class="card-text">
+                                &#8377;<b><%=listing.price.toLocaleString("en-IN") %></b>
+                                <span class="text-muted">/ night</span>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            <% } %>
+        </div>
+    <% } else { %>
+       <div class="row mt-5">
+            <div class="col-12 text-center">
+                <i class="fa-regular fa-heart" style="font-size: 4rem; color: #d3d3d3;"></i>
+                <h4 class="mt-4">Your Wishlist is Empty</h4>
+                <p class="text-muted">You haven't saved any listings yet. <br> Click the heart icon on a listing to add it to your wishlist.</p>
+                <a href="/listings" class="btn btn-dark mt-2">Explore Listings</a>
+            </div>
+        </div>
+    <% } %>
+</div>
+
+ 
+
+ 

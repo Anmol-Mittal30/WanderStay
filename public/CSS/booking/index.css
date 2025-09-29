@@ -1,0 +1,26 @@
+    
+    .booking-card {
+        border: none;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        
+    }
+    .booking-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 10px -8px 12px rgba(0,0,0,0.1);
+     
+    }
+    .booking-img-container {
+        width: 100%;
+        padding-top: 75%; 
+        position: relative;
+        overflow: hidden;
+        border-radius: 0.5rem; /* rounded  corners for the image */
+    }
+    .booking-img-container img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* image fills the container without distortion */
+    }
