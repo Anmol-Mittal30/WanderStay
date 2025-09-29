@@ -116,7 +116,7 @@ app.use("/api/booking", bookingRouter);
 
 
 app.get("/", (req, res) => {
-    res.send("Hii I am a root !. succcessful");
+  res.redirect("/listings");
 })
 
 
