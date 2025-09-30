@@ -56,7 +56,7 @@ module.exports.showListing = async (req, res, next) => { // Added next for error
                 res.redirect("/listings");
             });
         }
-        res.render("listings/show.ejs", { listing });
+        res.render("listings/show.ejs", { listing ,mapToken: process.env.MAP_TOKEN  });
     } catch (err) {
         req.flash("error", "Something Went Wrong. Try Again");
         //  Wait for session to save before redirecting.
