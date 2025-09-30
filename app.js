@@ -2,6 +2,8 @@ if (process.env.NODE_ENV != "production") {
     require("dotenv").config();
 }
 
+const helmet = require("helmet");
+
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 5000;
@@ -51,6 +53,62 @@ app.use(express.json()); // <-- ADD THIS LINE HERE
 app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
+
+// ---------------------- HELMET SECURITY MIDDLEWARE ---------------
+
+// List of trusted sources for your Content Security Policy
+const scriptSrcUrls = [
+    "https://stackpath.bootstrapcdn.com/",
+    "https://api.tiles.mapbox.com/",
+    "https://api.mapbox.com/",
+    "https://kit.fontawesome.com/",
+    "https://cdnjs.cloudflare.com/",
+    "https://cdn.jsdelivr.net",
+];
+const styleSrcUrls = [
+    "https://kit-free.fontawesome.com/",
+    "https://stackpath.bootstrapcdn.com/",
+    "https://api.mapbox.com/",
+    "https://api.tiles.mapbox.com/",
+    "https://fonts.googleapis.com/",
+    "https://use.fontawesome.com/",
+    "https://cdn.jsdelivr.net",
+];
+const connectSrcUrls = [
+    "https://api.mapbox.com/",
+    "https://a.tiles.mapbox.com/",
+    "https://b.tiles.mapbox.com/",
+    "https://events.mapbox.com/",
+];
+const fontSrcUrls = [];
+
+app.use(
+    helmet.contentSecurityPolicy({
+        directives: {
+            defaultSrc: [],
+            // Sources for API calls and connections
+            connectSrc: ["'self'", ...connectSrcUrls],
+            // Sources for JavaScript files
+            scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
+            // Sources for stylesheets
+            styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
+            workerSrc: ["'self'", "blob:"],
+            objectSrc: [],
+            // Sources for images
+            imgSrc: [
+                "'self'",
+                "blob:", // sometimes used for image previews
+                "data:", // which fixes your new.ejs image preview
+                "https://res.cloudinary.com/dhpaiyp7b/", //
+                "https://images.unsplash.com/",
+            ],
+            // Sources for fonts
+            fontSrc: ["'self'", ...fontSrcUrls],
+        },
+    })
+);
+
+// ---------------------- END OF HELMET CONFIG ---------------------
 
 
 
