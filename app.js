@@ -54,9 +54,9 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
-// ---------------------- HELMET SECURITY MIDDLEWARE ---------------
+// In app.js
 
-// List of trusted sources for your Content Security Policy
+// ---------------------- HELMET SECURITY MIDDLEWARE (CORRECTED) ---
 const scriptSrcUrls = [
     "https://stackpath.bootstrapcdn.com/",
     "https://api.tiles.mapbox.com/",
@@ -64,6 +64,7 @@ const scriptSrcUrls = [
     "https://kit.fontawesome.com/",
     "https://cdnjs.cloudflare.com/",
     "https://cdn.jsdelivr.net",
+    "https://www.paypal.com", // Added for PayPal script
 ];
 const styleSrcUrls = [
     "https://kit-free.fontawesome.com/",
@@ -79,37 +80,35 @@ const connectSrcUrls = [
     "https://a.tiles.mapbox.com/",
     "https://b.tiles.mapbox.com/",
     "https://events.mapbox.com/",
+    "https://www.paypal.com", // Added for PayPal API calls
 ];
-const fontSrcUrls = [];
+// ✅ THE FIX IS HERE
+const fontSrcUrls = ["https://fonts.gstatic.com"];
 
 app.use(
     helmet.contentSecurityPolicy({
         directives: {
             defaultSrc: [],
-            // Sources for API calls and connections
             connectSrc: ["'self'", ...connectSrcUrls],
-            // Sources for JavaScript files
             scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
-            // Sources for stylesheets
             styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
             workerSrc: ["'self'", "blob:"],
             objectSrc: [],
-            // Sources for images
             imgSrc: [
                 "'self'",
-                "blob:", // sometimes used for image previews
-                "data:", // which fixes your new.ejs image preview
-                "https://res.cloudinary.com/dhpaiyp7b/", //
+                "blob:",
+                "data:",
+                "https://res.cloudinary.com/dhpaiyp7b/",
                 "https://images.unsplash.com/",
             ],
-            // Sources for fonts
+            // ✅ THE FIX IS APPLIED HERE
             fontSrc: ["'self'", ...fontSrcUrls],
+            // Added for PayPal iFrame
+            frameSrc: ["'self'", "https://www.paypal.com"],
         },
     })
 );
-
 // ---------------------- END OF HELMET CONFIG ---------------------
-
 
 
 
