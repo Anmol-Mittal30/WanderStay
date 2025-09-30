@@ -64,28 +64,17 @@ const listingSchema = new Schema({
 
 })
 
-// listingSchema.post("findOneAndDelete", async (listing) => {
-//     if (listing) {
-//         await Review.deleteMany({ _id: { $in: listing.reviews } });
-
-//         // if (listing.reviews.length) {
-//         //     await Review.deleteMany({ _id: { $in: listing.reviews } });
-//         // }
-//         //  Delete associated bookings
-//         await Booking.deleteMany({ listing: listing._id });
-//     }
-// })
 
 
 // Virtual Properties 
 listingSchema.virtual('cardImage').get(function () {
     //  creates URL for a smaller, optimized image for cards
-    return this.image.url.replace('/upload', '/upload/w_300,q_auto:good');
+    return this.image.url.replace('/upload', '/upload/w_400,q_auto:good');
 });
 
 listingSchema.virtual('showImage').get(function () {
     // creates a URL for a larger, high-quality image for the show page
-    return this.image.url.replace('/upload', '/upload/w_800,q_auto:best');
+    return this.image.url.replace('/upload', '/upload/w_1400,q_auto:best');
 });
 
 //  middleware to delete associated reviews and bookings
