@@ -24,7 +24,9 @@ const wishlistRouter = require("./routes/wishlist.js");
 const bookingRouter = require("./routes/booking.js");
 
 const Mongo_URL = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/wanderlust";
-// const Mongo_URL =  "mongodb://127.0.0.1:27017/wanderlust";
+
+// const Mongo_URL = process.env.MONGO_URL                     //   use when  want to see deploying preview in local machine  
+// const Mongo_URL =  "mongodb://127.0.0.1:27017/wanderlust";  // when you clone this ->  prefer to use this for better understanding  
 
 
 main()
