@@ -21,6 +21,7 @@ WanderSTAY is a full-stack web application inspired by Airbnb, built from the gr
 * **Reviews and Ratings:** Authenticated users can post reviews and star ratings on listings.
 * **Responsive Design:** A clean and modern UI built with Bootstrap 5 that works on all devices.
 * **Flash Messages:** Provides user feedback for actions like successful login or error notifications.
+* **User Avatars:** User profile photo are automatically generated using [Pravatar](https://pravatar.cc/), a free placeholder avatar service. Each unique username is assigned a avatar profile photo.
 
 ## 🛠️ Tech Stack
 
