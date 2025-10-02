@@ -36,6 +36,22 @@ This project uses a classic SSR (Server-Side Rendering) setup with EJS for templ
 * **Security:**  `joi` for schema validation
 * **Other Tools:** `connect-flash`, `method-override`, `dotenv`
 
+## 📂 File Structure
+
+The project follows the Model-View-Controller (MVC) architectural pattern to ensure a clean separation of concerns, making the codebase organized and scalable.
+```
+├── 📂 controllers/      # Contains logic to handle requests and interact with models.
+├── 📂 models/           # Defines Mongoose schemas for the database.
+├── 📂 public/           # Static assets (client-side CSS and JavaScript).
+├── 📂 routes/           # Express routers to define URL endpoints.
+├── 📂 utils/            # Utility functions (error handling, etc.).
+├── 📂 views/            # EJS templates for the user interface.
+├── .env                 # Environment variables (API keys, secrets).
+├── app.js               # The main application entry point.
+├── middleware.js        # Custom middleware functions (e.g., isLoggedIn).
+└── package.json         # Project metadata and dependencies.
+```
+
 ## 🚀 Getting Started
 
 Follow these steps to run the project on your local machine.
