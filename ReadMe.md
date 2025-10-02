@@ -1,6 +1,6 @@
 # WanderSTAY 🏨
 
-### [Live Demo 🔗](https://wanderstay-d2mf.onrender.com/)
+### [Live Demo 🔗](https://wanderstay-production.up.railway.app/)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Made with Node.js](https://img.shields.io/badge/Node.js-18.x-green.svg)](https://nodejs.org/)
